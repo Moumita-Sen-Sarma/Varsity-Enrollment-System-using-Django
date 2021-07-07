@@ -1,0 +1,27 @@
+
+
+{% block content %}
+
+
+
+
+
+
+	{% if all_enrolled_session|length > 0 %}
+		<option value="" disabled selected>Choose Session</option>
+		{% for t in all_enrolled_session %}
+			
+			<option value="{{ t.session }}">{{ t.session }}</option>
+
+			
+
+		{% endfor %}
+
+	{% else %}
+  		<option value="">No Data Found</option>
+
+   	{% endif %}
+
+
+{% endblock %}
+

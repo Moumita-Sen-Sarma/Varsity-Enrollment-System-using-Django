@@ -1,0 +1,24 @@
+
+
+
+	<li><a href="/">Home</a></li>
+
+    <li><a href="/graph">Graph View</a></li>
+    <li><a href="/view_students">View Students</a></li>
+
+   	{% if user.is_authenticated %}
+
+   		{% if user.userRole == "registrar" %}
+    		<li><a href="/cpanel">Control Panel</a></li>
+    	{% endif %}
+
+   		<li><a href="/account">{{user.username|title}}</a></li>
+    	<li><a href="/logout">Logout</a></li>
+
+    	
+
+    {% else %}
+    	<li><a href="/login">Login</a></li>
+    {% endif %}
+
+

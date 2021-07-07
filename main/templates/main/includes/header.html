@@ -1,0 +1,61 @@
+{% load static %}
+
+<head>
+
+	<!-- Compiled and minified CSS -->
+    
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    
+    
+
+    <style type="text/css">
+  	
+
+
+		  body {
+		    display: flex;
+		    min-height: 100vh;
+		    flex-direction: column;
+		  }
+
+		  main {
+		    flex: 1 0 auto;
+		  }
+		      
+
+</style>
+       
+</head>
+
+<body>
+
+	<nav class="indigo darken-2">
+	    <div class="nav-wrapper container" >
+	      <a href="/" class="brand-logo">BS-23</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+	      	{% include 'main/includes/navbaritems.html' %}
+
+	      </ul>
+	    </div>
+  	</nav>
+
+
+
+  	<main>
+ 	
+		{% include 'main/includes/messages.html' %}
+
+		{% block content %}
+	  	
+	  	{% endblock %}
+
+	</main>
+
+	  	{% include 'main/includes/footer.html' %}
+</body>

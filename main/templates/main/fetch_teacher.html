@@ -1,0 +1,27 @@
+
+
+{% block content %}
+
+
+
+
+
+
+	{% if all_teachers|length > 0 %}
+		<option value="" disabled selected>Choose Course Coordinator</option>
+		{% for t in all_teachers %}
+			
+			<option value="{{ t.first_name }}">{{ t.first_name }}</option>
+
+			
+
+		{% endfor %}
+
+	{% else %}
+  		<option value="">No Data Found</option>
+
+   	{% endif %}
+
+
+{% endblock %}
+

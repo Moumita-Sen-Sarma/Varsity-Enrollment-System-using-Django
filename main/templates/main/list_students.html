@@ -1,0 +1,68 @@
+
+
+{% block content %}
+
+
+<div class="container">
+
+
+
+
+	{% if all_students|length > 0 %}
+
+		{% for st in all_students %}
+			
+		
+
+ 	
+ 	<table>
+        
+
+        <tbody>
+
+	        <tr>
+	        	 <th>First Name:</th>
+	        	<td>{{ st.first_name }}</td>
+	        </tr>
+	         <tr>
+	         	<th>Last Name:</th>
+	        	<td>{{ st.last_name }}</td>
+	        </tr>
+
+	         {% if user.is_authenticated %}
+	         <tr>
+	         	<th>Birth Date:</th>
+	        	<td>{{ st.b_date }}</td>
+	        </tr>
+	          {% endif %}
+	       
+	         <tr>
+	         	<th>Age :</th>
+	        	<td>{{ age }}</td>
+	        </tr>
+
+	      
+	         <tr>
+	         	 <th>Roll:</th>
+	        	<td>{{ st.roll }}</td>
+	        </tr>
+	         <tr>
+	         	<th>Department:</th>
+	        	<td>{{ st.dept }}</td>
+	        </tr>
+	         <tr>
+	         	<th>Batch:</th>
+	        	<td>{{ st.batch }}</td>
+	        </tr>
+	         
+        </tbody>
+	</table>
+
+	{% endfor %}
+
+	{% else %}
+  		<span>No Value.</span>
+   	{% endif %}
+
+
+{% endblock %}

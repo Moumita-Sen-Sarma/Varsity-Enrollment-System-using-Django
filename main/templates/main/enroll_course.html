@@ -1,0 +1,133 @@
+{% extends 'main/includes/header.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+
+	   <div class="row">
+
+    	    <form class="col s12 l6" action="" method="POST">
+                {% csrf_token %}
+    	 
+
+            
+
+              
+
+            <script>
+                $(document).ready(function() {
+                    
+                $("#selectedDept").formSelect();
+                $("#selectedBatch").formSelect();
+                $("#crs_teacher").formSelect();
+
+
+            });
+             </script>
+
+              <div class="row">
+                    <div class="input-field col s12">
+                        <select name="dept" id="selectedDept">
+                            <option value="" disabled selected>Choose Department</option>
+                            <option value="EEE">EEE</option>
+                            <option value="CSE">CSE</option>
+                            <option value="ME">ME</option>
+                            <option value="CE">CE</option>
+                            <option value="PME">PME</option>
+
+                        </select>
+                        <label>Department</label>
+                    </div>
+              </div>
+
+              <div class="row">
+                    <div class="input-field col s12">
+                    	<select name="crs_teacher" id="crs_teacher">
+                          <option value="" disabled selected>Choose Course Coordinator</option>  
+                            
+
+                        </select>
+                        <label>Course Coordinator</label>
+
+                    </div> 
+              </div>
+
+          	<script type="text/javascript">
+          		$(document).ready(function(){
+
+				    $('#selectedDept').change(function(){
+				        $selectedDept = $('#selectedDept').val();
+				       
+				 
+				        if($('#selectedDept').val() == ""){
+				            alert("Please fill up the required field");
+				        }else{
+				            $.ajax({
+				                type: "POST",
+				                url : "/fetch_teacher/",
+				                data: {
+				                    selectedDept: $selectedDept,
+				                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+				                },
+				                success: function(data){			
+
+				                    document.getElementById('crs_teacher').innerHTML = data;
+				                    $("#crs_teacher").formSelect();	  
+				                },
+				                error: function (xhr, ajaxOptions, thrownError) { 
+							        alert(xhr.responseText); 
+							    }
+				            });
+				        }
+			 
+			    	});
+				});
+          	</script>
+
+
+
+
+
+              <div class="row">
+                    <div class="input-field col s12">
+                        <select name="batch" id="selectedBatch">
+                            <option value="" disabled selected>Choose Batch</option>
+                            
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+
+                        </select>
+                        <label>Batch</label>
+                    </div>
+              </div>
+
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="session" type="text" class="validate" name="session" value="{{current_date}}">
+                  <label for="session">Session</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s12">
+                  
+                	<button type="submit" class="btn">Enroll</button>
+
+                </div>
+              </div>
+
+            </form>
+
+            
+
+        </div>
+
+ 
+       
+</div>
+
+{% endblock %}

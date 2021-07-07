@@ -1,0 +1,27 @@
+
+
+{% block content %}
+
+
+
+
+
+
+	{% if all_enrolled_batch|length > 0 %}
+		<option value="" disabled selected>Choose Batch</option>
+		{% for t in all_enrolled_batch %}
+			
+			<option value="{{ t.batch }}">{{ t.batch }}</option>
+
+			
+
+		{% endfor %}
+
+	{% else %}
+  		<option value="">No Data Found</option>
+
+   	{% endif %}
+
+
+{% endblock %}
+

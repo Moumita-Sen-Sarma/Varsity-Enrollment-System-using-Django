@@ -1,0 +1,29 @@
+{% extends 'main/includes/header.html' %}
+
+{% block content %}
+
+ <div class="container">
+	<table>
+        
+
+        <tbody>
+        	<tr>
+        		<th>First Name:</th>
+        		<td>{{user.first_name}}</td>
+        	</tr>
+        	<tr>
+        		<th>Last Name:</th>
+        		<td>{{user.last_name}}</td>
+        	<tr>
+        		<th>Email:</th>
+        		<td>{{user.email}}</td>
+        	</tr>	
+
+
+        </tbody>
+    </table>    
+
+ </div>
+
+
+{% endblock %}

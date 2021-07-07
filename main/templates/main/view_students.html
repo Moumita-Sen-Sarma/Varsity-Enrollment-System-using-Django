@@ -1,0 +1,93 @@
+
+{% extends 'main/includes/header.html' %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="container">
+
+
+
+
+
+	 <div class="row">
+
+	  
+            {% csrf_token %}
+	    
+			<div class="row">
+
+				<div class="input-field col s6">
+				  	<input id="search_id" type="text" class="validate" name="search_id">
+				  	<label for="search_id" class="">Search BY Student ID eg: 1501001</label>
+				</div>
+
+
+				<div class="row">
+					<div class="col s12">
+						<button type="submit" class="btn" id="search_btn">View Details</button>
+					</div>
+				</div>
+
+			</div>
+     
+
+				
+        
+
+        <script>
+        	/**
+			$(document).ready(function(){
+			  $("#search_btn").click(function(){
+
+			    $.ajax({url: "/list_students", success: function(result){
+			    val id = $("#search_id").val()
+			    $("#div1").html(result);
+			    }});
+			  });
+			});
+		**/
+		$(document).ready(function(){
+		    $('#search_btn').on('click', function(){
+		        $search_id = $('#search_id').val();
+		       
+		 
+		        if($('#search_id').val() == ""){
+		            alert("Please fill up the required field");
+		        }else{
+		            $.ajax({
+		                type: "POST",
+		                url : "/list_students/",
+		                data: {
+		                    search_id: $search_id,
+		                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+		                },
+		                success: function(data){
+		                    
+		                    $('#search_id').val('');
+		                    document.getElementById('server-results').innerHTML = data;
+		                },
+		                error: function (xhr, ajaxOptions, thrownError) { 
+					        alert(xhr.responseText); 
+					    }
+		            });
+		        }
+ 
+    });
+});
+			
+
+		</script>
+
+      
+        <div id="server-results"><h2>   </h2></div>
+
+        </div>
+
+</div>
+
+{% endblock %}
