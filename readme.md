@@ -9,7 +9,7 @@ implement the framework.
 - The project was given to us to get a taste of how a software firm develops a project. And
 with great team work the project was completed in due time.
 
-You can view the project live <a href="">here</a>.
+You can view the project live <a href="http://moumitasen.pythonanywhere.com/">here</a>.
 - Username: shafiq
 - Password: 1234!@#$
 
